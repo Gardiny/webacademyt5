@@ -1,0 +1,27 @@
+*{  
+    color: red;
+}
+a{
+    text-align: center;
+    color:rgb(4, 255, 0);
+    
+}
+.link_class_blue {
+    color: blue;
+}
+#link_id_size{
+    font-size: 30px;
+}
+
+a [href="http://csi.ufac.b"]{
+    background-color:papayawhip;
+}
+p.p1{
+    color: bisque;
+}
+p span{
+    font-style: italic;
+}
+p+h1{
+    font-size: 72px;
+}
