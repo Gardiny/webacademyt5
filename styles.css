@@ -10,6 +10,10 @@ div.logo {
     color:aliceblue;
     font-weight: bold;
 }
+
+div.usuario{
+   text-align: right; 
+}
 /* nav */
 nav {
     background-color: #7a7a7a;
@@ -62,6 +66,9 @@ a.botao#Excluir{
 a.botao#Excluir:hover{
     background-color: rgb(0, 126, 184);
 }
+/* from */
+
+
 
 /* rodape */
 
