@@ -15,9 +15,15 @@ div.logo {
 main{
     background: linear-gradient(#cccccc, #ffffff);
     padding: 16px;
-
-
 }
+.botao{
+    color: white;
+    background-color: rgb(21, 191, 15);
+    border: none;
+    border-radius: 4px;
+    
+}
+
 /* rodape */
 
 footer, span a{
