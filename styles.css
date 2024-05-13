@@ -111,6 +111,30 @@ input:invalid,section:invalid{
     }
 
 }
+/* tabela */
+table{
+    width: 99%;
+    text-align: center;
+}
+table tr td{
+    padding: 0.4em;
+}
+table thead{
+    background-color: #003366;
+    color: white;
+}
+table tbody tr:nth-child(odd) {
+    background-color: #325584;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #88b4e9;
+}
+table tbody tr:hover {
+    background-color: #a042af;
+}
+
+
 
 /* rodape */
 
