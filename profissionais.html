@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <meta name="viewport" content="with=device-width">
+        <meta charset="utf-8">
+        <meta name="viewport" content="with=device-width, ">
         <title>Profissionais</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
@@ -29,32 +31,34 @@
         </ul>
     </nav>
     <main>
-        <form class="grid" action="">
-            <label for="nomeProfissional">Nome:</label>
-            <input type="text" nome="nome" id="nomeProfissional">
-            <label for="registroConselho">Registro Conselho:</label>
-            <input type="text" name="registro" id="registroConselho">
-            <label for="telefone">telefone:</label>
-            <input type="text" nome="telefone" id="telefone">
-            <label for="email">Email:</label>
-            <input type="text" name="email" id="email">
-            <label for="Unidade">Unidade:</label><select>
-                        <option value="1"></option>
-                        <option value="2">Pronto atendimento</option>
-                        <option value="3">Exames Labaratorial</option>
-                        <option value="4">UTI</option>
-                    </select>
-            <label for="especialidade">Especialidade:</label>
-                    <select>
-                        <option value="1"></option>
-                        <option value="2">Cardiologia</option>
-                        <option value="3">Urologia</option>
-                        <option value="4">Neurologia</option>
-                    </select>
-            <input type="hidden">
-            <br><input type="submit" value="Enviar" ><br>
-            <input type="hidden">
-            <input type="button" value="Cancelar" id="vermelho" >
+        <form action="">
+            <div class="grid">
+                <label for="nomeProfissional">Nome</label>
+                <input type="text" nome="nome" id="nomeProfissional">
+                <label for="registroConselho">Registro Conselho</label>
+                <input type="text" name="registro" id="registroConselho">
+                <label for="telefone">telefone</label>
+                <input type="text" nome="telefone" id="telefone">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email">
+                <label for="Unidade">Unidade</label><select>
+                            <option value="1"></option>
+                            <option value="2">Pronto atendimento</option>
+                            <option value="3">Exames Labaratorial</option>
+                            <option value="4">UTI</option>
+                        </select>
+                <label for="especialidade">Especialidade</label>
+                        <select>
+                            <option value="1"></option>
+                            <option value="2">Cardiologia</option>
+                            <option value="3">Urologia</option>
+                            <option value="4">Neurologia</option>
+                        </select>
+                <span></span>
+                <input type="submit" value="Enviar">
+                <span></span>
+                <input type="button" id="vermelho" value="Cancelar">
+            </div>
         </form>
         <!-- Tabela com 8 colunas e 5 linhas-->
         <table>
