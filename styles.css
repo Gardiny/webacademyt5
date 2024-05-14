@@ -29,7 +29,7 @@ main {
 }
 /* nav */
 nav {
-    background-color: #7a7a7a;
+    background-color: #454545;
 }
 nav ul {
     list-style-type: none;
@@ -42,12 +42,13 @@ nav ul li {
 }
 nav ul li a {
     display: block;
-    padding: 10px 10px;
+    padding: 5px 10px;
     color: #ffffff;
     text-decoration: none;
 }
 nav ul li a:hover {
     background-color: rgb(21, 191, 15);
+    color: #e70606;
 } 
 
 
@@ -75,12 +76,16 @@ input[type="submit"]:hover,
 input[type="button"]:hover{
     background-color: #006699;
 }
-a.botao#Excluir{
-    background-color: red;
-}
-a.botao#Excluir:hover{
-    background-color: rgb(0, 126, 184);
-}
+a.botao#vermelho,
+    input [type="button"] {
+        background-color: red;
+    }
+
+a.botao#vermelho:hover,
+    input[type="button"]:hover{
+        background-color: rgb(0, 126, 184);
+    }
+
 /* from */
 form label::after{
     content: "";
@@ -115,11 +120,12 @@ input:invalid,section:invalid{
 table{
     width: 99%;
     text-align: center;
+    margin-top: 20px;
 }
 table tr td{
     padding: 0.4em;
 }
-table thead{
+table thead, table tfoot{
     background-color: #003366;
     color: white;
 }
@@ -133,7 +139,6 @@ table tbody tr:nth-child(even) {
 table tbody tr:hover {
     background-color: #a042af;
 }
-
 
 
 /* rodape */
