@@ -14,6 +14,8 @@ selectTema.addEventListener('change', evento => {
     let temaSelecionado = evento.target.value;
     // console.log(temaSelecionado);
     if(temaSelecionado){mudaTema(temaSelecionado);}
+    
+    localStorage.setItem('tema', temaSelecionado)
 });
 
 const mudaTema = (temaSelecionado) => {
