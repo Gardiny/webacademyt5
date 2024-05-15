@@ -12,5 +12,17 @@
 let selectTema = document.querySelector('select#tema')
 selectTema.addEventListener('change', evento => {
     let temaSelecionado = evento.target.value;
-    console.log(temaSelecionado);
-})
+    // console.log(temaSelecionado);
+    if(temaSelecionado){mudaTema(temaSelecionado);}
+});
+
+const mudaTema = (temaSelecionado) => {
+    let linkTema = document.querySelector('#link-tema');
+    let url = "/css/estilo-tema-"+temaSelecionado+".css";
+    linkTema.href = url;
+}
+
+let tema = localStorage.getItem('tema');
+if(tema){
+    mudaTema(tema);
+}
