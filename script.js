@@ -171,7 +171,7 @@ const carregarProfissionais = () => {
     xhr.send();
 };
 
-carregarProfissionais();
+//carregarProfissionais();
 let botoesExcluir = document.querySelectorAll('a.botao#vermelho');
 // > Adiciona um evento de clique para cada botão
 botoesExcluir.forEach(botao => {
@@ -193,4 +193,53 @@ botaoCancelar.addEventListener('click', () => {
     form.reset();
 })
 
+let tabela = document.querySelector('table');
+//adicionar um fucionamento para enviar os dados do form a tabela
+form.addEventListener('submit', (evento) =>{
+    evento.preventDefault();
+    let profissionais = {
+        id: tabela.tBodies[0].rows.length + 1,
+        nome: form.nome.value,
+        registroConselho: form.registro.value,
+        telefone: form.telefone.value,
+        email: form.email.value,
+        unidade: form.unidade.value,
+        especialidade: form.especialidade.value
+    };
+    inserirProffisional(profissionais);
+
+});
+//funçao que insere um objeto profissional na tabela html
+const inserirProffisional = (item) => {
+            let linha = document.createElement('tr');
+            let id = document.createElement('td');
+            let nome = document.createElement('td');
+            let registroConselho = document.createElement('td');
+            let email = document.createElement('td');
+            let telefone = document.createElement('td');
+            let unidade = document.createElement('td');
+            let especialidade = document.createElement('td');
+            let acoes = document.createElement('td');
+
+            id.textContent = item.id;
+            nome.textContent = item.nome;
+            registroConselho.textContent = item.registroConselho;
+            email.textContent = item.email;
+            telefone.textContent = item.telefone;
+            unidade.textContent = item.unidade;
+            especialidade.textContent = item.especialidade;
+            acoes.innerHTML = '<a class="botao" href="javascript:void(0)">Editar</a> <a class="botao vermelho" id="vermelho" href="javascript:void(0)">Excluir</a>';
+
+            linha.appendChild(id);
+            linha.appendChild(nome);
+            linha.appendChild(registroConselho);
+            linha.appendChild(email);
+            linha.appendChild(telefone);
+            linha.appendChild(unidade);
+            linha.appendChild(especialidade);
+            linha.appendChild(acoes);
+
+            tabela.tBodies[0].appendChild(linha);
+
+}
 
