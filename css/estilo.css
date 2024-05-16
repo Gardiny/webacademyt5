@@ -142,10 +142,17 @@ select:invalid {
 }
 
 /* Tabela */
+
+.ma{
+    width: 100%;
+    overflow-x: auto;
+}
+
 table {
     width: 99%;
     text-align: center;
     margin-top: 20px;
+
 }
 
 table tr td {
