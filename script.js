@@ -75,19 +75,63 @@ if(tema){
 //     xhr.send();
 // };
 
-const carregarProfissionais = () =>{
+// const carregarProfissionais = () =>{
+//     let url = "https://my-json-server.typicode.com/juniorlimeiras/json/profissionais";
+//     let xhr = new XMLHttpRequest();
+//     xhr.open('GET', url);
+//     let tabela = document.querySelector('table');
+//     xhr.addEventListener('readystatechange', () => {
+//         if(xhr.readyState === 4 && xhr.status === 200){
+//             let dados = JSON.parse(xhr.responseText);
+//             // console.log(dados);
+//             for(const item of dados){
+//                 //Criando as colunas da página profissionais
+//                 let linha = document.createElement('tr');
+//                 let id= document.createElement('td');
+//                 let nome = document.createElement('td');
+//                 let registroConselho = document.createElement('td');
+//                 let email = document.createElement('td');
+//                 let telefone = document.createElement('td');
+//                 let unidade = document.createElement('td');
+//                 let especialidade = document.createElement('td');
+//                 let acoes = document.createElement('td');
+//                 //preenchendo os elementos
+//                 id.textContent = item.id
+//                 nome.textContent = item.nome
+//                 registroConselho.textContent = item.registro
+//                 email.textContent = item.email
+//                 telefone.textContent = item.telefone
+//                 unidade.textContent = item.unidade
+//                 especialidade.textContent = item.especialidade
+//                 acoes.innerHTML = '<a class="botao" href="javascript:void(0)">Editar</a> <a id="vermelho" class="botao" href="javascript:void(0)">Excluir</a>';
+//                 //Preenchendo a linha agora kkkk :)
+//                 linha.appendChild(id);
+//                 linha.appendChild(nome);
+//                 linha.appendChild(registroConselho);
+//                 linha.appendChild(email);
+//                 linha.appendChild(telefone);
+//                 linha.appendChild(unidade);
+//                 linha.appendChild(especialidade);
+//                 linha.appendChild(acoes);
+//                 //Preenchendo a tabela com uma linha da tabela
+//                 tabela.tBodies[0].appendChild(linha);
+//         }
+//     }
+//     });
+//     xhr.send();    
+// };
+// carregarProfissionais();
+const carregarProfissionais = () => {
     let url = "https://my-json-server.typicode.com/juniorlimeiras/json/profissionais";
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url);
     let tabela = document.querySelector('table');
     xhr.addEventListener('readystatechange', () => {
-        if(xhr.readyState === 4 && xhr.status === 200){
+        if (xhr.readyState === 4 && xhr.status === 200) {
             let dados = JSON.parse(xhr.responseText);
-            // console.log(dados);
-            for(const item of dados){
-                //Criando as colunas da página profissionais
+            for (const item of dados) {
                 let linha = document.createElement('tr');
-                let id= document.createElement('td');
+                let id = document.createElement('td');
                 let nome = document.createElement('td');
                 let registroConselho = document.createElement('td');
                 let email = document.createElement('td');
@@ -95,16 +139,16 @@ const carregarProfissionais = () =>{
                 let unidade = document.createElement('td');
                 let especialidade = document.createElement('td');
                 let acoes = document.createElement('td');
-                //preenchendo os elementos
-                id.textContent = item.id
-                nome.textContent = item.nome
-                registroConselho.textContent = item.registro
-                email.textContent = item.email
-                telefone.textContent = item.telefone
-                unidade.textContent = item.unidade
-                especialidade.textContent = item.especialidade
-                acoes.innerHTML = '<a class="botao" href="javascript:void(0)">Editar</a> <a id="vermelho" class="botao" href="javascript:void(0)">Excluir</a>';
-                //Preenchendo a linha agora kkkk :)
+
+                id.textContent = item.id;
+                nome.textContent = item.nome;
+                registroConselho.textContent = item.registro;
+                email.textContent = item.email;
+                telefone.textContent = item.telefone;
+                unidade.textContent = item.unidade;
+                especialidade.textContent = item.especialidade;
+                acoes.innerHTML = '<a class="botao" href="javascript:void(0)">Editar</a> <a class="botao vermelho" id="vermelho" href="javascript:void(0)">Excluir</a>';
+
                 linha.appendChild(id);
                 linha.appendChild(nome);
                 linha.appendChild(registroConselho);
@@ -113,19 +157,26 @@ const carregarProfissionais = () =>{
                 linha.appendChild(unidade);
                 linha.appendChild(especialidade);
                 linha.appendChild(acoes);
-                //Preenchendo a tabela com uma linha da tabela
+
                 tabela.tBodies[0].appendChild(linha);
+
+                // Adiciona evento de clique ao botão de exclusão
+                let botaoExcluir = linha.querySelector('a.vermelho');
+                botaoExcluir.addEventListener('click', () => {
+                    linha.remove(); // Remove a linha da tabela
+                });
+            }
         }
-    }
     });
-    xhr.send();    
+    xhr.send();
 };
+
 carregarProfissionais();
-
-let botaoExcluir = document.querySelector('a.botao#vermelho');
-for (const bt of botoes){
-    bt.addEventListener('click', () => {
-        bt.remove();
+let botoesExcluir = document.querySelectorAll('a.botao#vermelho');
+// Adiciona um evento de clique para cada botão
+botoesExcluir.forEach(botao => {
+    botao.addEventListener('click', () => {
+        // Remove o pai do botão (a linha da tabela)
+        botao.parentNode.parentNode.remove();
     });
-
-}
+});
