@@ -123,6 +123,9 @@ const carregarProfissionais = () =>{
 carregarProfissionais();
 
 let botaoExcluir = document.querySelector('a.botao#vermelho');
-botaoExcluir.addEventListener('click', () => {
-    console.log
-});
+for (const bt of botoes){
+    bt.addEventListener('click', () => {
+        bt.remove();
+    });
+
+}
