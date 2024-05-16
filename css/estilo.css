@@ -105,6 +105,9 @@ nav ul li a:hover {
 
 
 /* Form */
+form.inativo{
+    display: none;
+}
 
 form label::after {
     content: ":";

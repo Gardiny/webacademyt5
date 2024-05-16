@@ -160,10 +160,10 @@ const carregarProfissionais = () => {
 
                 tabela.tBodies[0].appendChild(linha);
 
-                // Adiciona evento de clique ao botão de exclusão
+                // > Adiciona evento de clique ao botão de exclusão
                 let botaoExcluir = linha.querySelector('a.vermelho');
                 botaoExcluir.addEventListener('click', () => {
-                    linha.remove(); // Remove a linha da tabela
+                    linha.remove(); // < Remove a linha da tabela
                 });
             }
         }
@@ -173,10 +173,24 @@ const carregarProfissionais = () => {
 
 carregarProfissionais();
 let botoesExcluir = document.querySelectorAll('a.botao#vermelho');
-// Adiciona um evento de clique para cada botão
+// > Adiciona um evento de clique para cada botão
 botoesExcluir.forEach(botao => {
     botao.addEventListener('click', () => {
-        // Remove o pai do botão (a linha da tabela)
+        // > Remove o pai do botão (a linha da tabela)
         botao.parentNode.parentNode.remove();
     });
 });
+
+let botaoadicionar = document.querySelector('a.botao#add');
+let form = document.querySelector('form');
+let botaoCancelar = document.querySelector('input#vermelho');
+
+botaoadicionar.addEventListener('click', () => {
+    form.classList.remove('inativo');
+});
+botaoCancelar.addEventListener('click', () => {
+    form.classList.add('inativo');
+    form.reset();
+})
+
+
