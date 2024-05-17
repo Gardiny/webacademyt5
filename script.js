@@ -212,7 +212,7 @@ form.addEventListener('submit', (evento) =>{
     let profissionais = {
         id: tabela.tBodies[0].rows.length + 1,
         nome: form.nome.value,
-        registroConselho: form.registro.value,
+        registro: form.registro.value,
         telefone: form.telefone.value,
         email: form.email.value,
         unidade: form.unidade.options[form.unidade.selectedIndex].label,
@@ -226,7 +226,7 @@ const inserirProffisional = (item) => {
             let linha = document.createElement('tr');
             let id = document.createElement('td');
             let nome = document.createElement('td');
-            let registroConselho = document.createElement('td');
+            let registro = document.createElement('td');
             let email = document.createElement('td');
             let telefone = document.createElement('td');
             let unidade = document.createElement('td');
@@ -235,7 +235,7 @@ const inserirProffisional = (item) => {
 
             id.textContent = item.id;
             nome.textContent = item.nome;
-            registroConselho.textContent = item.registroConselho;
+            registro.textContent = item.registro;
             email.textContent = item.email;
             telefone.textContent = item.telefone;
             unidade.textContent = item.unidade;
@@ -244,7 +244,7 @@ const inserirProffisional = (item) => {
 
             linha.appendChild(id);
             linha.appendChild(nome);
-            linha.appendChild(registroConselho);
+            linha.appendChild(registro);
             linha.appendChild(email);
             linha.appendChild(telefone);
             linha.appendChild(unidade);
