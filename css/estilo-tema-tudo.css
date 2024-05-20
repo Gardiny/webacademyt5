@@ -9,7 +9,7 @@ header {
 
 table thead,
 table tfoot {
-    background-color: #00ffd5;
+    background-color: #9500f9;
 }
 
 table tbody tr:nth-child(odd) {
@@ -21,7 +21,7 @@ table tbody tr:nth-child(even) {
 }
 
 table tbody tr:hover {
-    background-color: #1e00ff2f;
+    background-color: #1e00ff;
 }
 
 table tfoot td {

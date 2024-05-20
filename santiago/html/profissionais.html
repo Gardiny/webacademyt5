@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profissionais</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/style.css" id="linkTema">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" id="linkTema">
+    <script src="../javascript/script.js" defer></script>
 </head>
 <body>
     <header>
@@ -29,7 +30,6 @@
             </div>
         </div>
     </header>
-
     <nav>
         <div class="menu-toggle" id="menuToggle">
             <span></span>
@@ -48,42 +48,45 @@
         </ul>
     </nav>
     <main>
-        <form action="" class="grid">
-            <label for="nomeProfissional">Nome</label>
-            <input type="text" name="nomeProfissional" id="nome" required>
+        <form action="" class="inativo">
+            <div class="grid">
+                <label for="nomeProfissional">Nome</label>
+                <input type="text" name="nomeProfissional" id="nome" required>
 
-            <label for="registrosConselho">Registro Conselho</label>
-            <input type="text" name="registros" id="registrosConselho" required>
-            
-            <label for="emailProfissional">Email</label>
-            <input type="email" name="emal" id="emailProfissional" required>
+                <label for="registrosConselho">Registro Conselho</label>
+                <input type="text" name="registroProfissional" id="registrosConselho" required>
+                
+                <label for="emailProfissional">Email</label>
+                <input type="email" name="emal" id="emailProfissional" required>
 
-            <label for="telefoneProfissional">Telefone</label>
-            <input type="tel" name="telefone" id="telefoneProfissional" required>
+                <label for="telefoneProfissional">Telefone</label>
+                <input type="tel" name="telefoneProfissional" id="telefoneProfissional" required>
 
-            <label for="unidadeProfissional">Unidade</label>
-            <select name="Unidade" id="unidadeProfissional" required>
-                <option value=""></option>
-                <option value="1">Pronto Atendimento</option>
-                <option value="2">Exames Laboratóriais</option>
-                <option value="3">UTI</option>
-            </select>
+                <label for="unidadeProfissional">Unidade</label>
+                <select name="unidadeProfissional" id="unidadeProfissional" required>
+                    <option value=""></option>
+                    <option value="1">Pronto Atendimento</option>
+                    <option value="2">Exames Laboratóriais</option>
+                    <option value="3">UTI</option>
+                </select>
 
-            <label for="especialidadeProfissional">Especialidade</label>
-            <select name="Especialidade" id="especialidadeProfissional" required>
-                <option value=""></option>
-                <option value="1">Cardiologia</option>
-                <option value="2">Urulogia</option>
-                <option value="3">Neurologia</option>
-            </select>
+                <label for="especialidadeProfissional">Especialidade</label>
+                <select name="Especialidade" id="especialidadeProfissional" required>
+                    <option value=""></option>
+                    <option value="1">Cardiologia</option>
+                    <option value="2">Urulogia</option>
+                    <option value="3">Neurologia</option>
+                </select>
 
-            <span></span>
-            <input type="submit" value="Enviar" class="enviar">
-            <span></span>
-            <input type="button" value="Cancelar" class="cancelar">
-            <span></span>
-
+                <span></span>
+                <input type="submit" value="Enviar" class="enviar">
+                <span></span>
+                <input type="button" value="Cancelar" class="cancelar">
+                <span></span>
+            </div>
         </form>
+        
+            <div class="esconder2"><a href="" class="adicionar">Adicionar</a></div>
         <!--Tabela com 8 colunas e 5 linhas-->
         <div class="table-container">
             <table>
@@ -105,7 +108,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="8">Total de registros</td>
+                        <td colspan="8">Total de registros <span id="total"></span></td>
                     </tr>
                 </tfoot>
             </table>
@@ -118,6 +121,5 @@
             <span>Email de contato <a href="#">suporte.sgcm@ufac.br</a></span>
         </div>
     </footer>
-    <script src="../javascript/scriptt.js"></script>
 </body>
 </html>

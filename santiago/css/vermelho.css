@@ -14,17 +14,13 @@ table tfoot,
 }
 
 table tbody tr:nth-child(odd) {
-    background-color: #df6b63;
+    background-color: #e45a50;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #df6b638f;
+    background-color: #e45a5069;
 }
 
 table tbody tr:hover {
-    background-color: #df63632f;
-}
-
-table tfoot td {
-    border-top: 1px solid #7f0404;
+    background-color: #e45a50af;
 }
