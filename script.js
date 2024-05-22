@@ -1,257 +1,131 @@
-// let botao = document.querySelector('a#add');
-// botao.addEventListener('click', () => {alert('Cliclado')});
-// botao.addEventListener('click', funcaoA);
-// botao.addEventListener('click', funcaoA);
-// function funcaoA() {
-//     alert('A');
-// }
-// function funcaoB() {
-//     alert('B');
-// }
-
-let selectTema = document.querySelector('select#tema')
-selectTema.addEventListener('change', evento => {
-    let temaSelecionado = evento.target.value;
-    // console.log(temaSelecionado);
-    if(temaSelecionado){mudaTema(temaSelecionado);}
-    
-    localStorage.setItem('tema', temaSelecionado)
+let selectTema = document.querySelector('select#tema');
+selectTema.addEventListener('change', 
+evento => {
+    let temaselecionado = evento.target.value;
+    //console.log(temaselecionado)
+    if (temaselecionado){
+        mudaTema(temaselecionado);
+        localStorage.setItem('tema', temaselecionado)
+    }
 });
-
-const mudaTema = (temaSelecionado) => {
-    let linkTema = document.querySelector('#link-tema');
-    let url = "/css/estilo-tema-"+temaSelecionado+".css";
+const mudaTema = (temaselecionado) => {
+    linkTema = document.querySelector('#linkTema');
+    let url = "./css/estilo-tema-" + temaselecionado + '.css';
     linkTema.href = url;
-}
-
-let tema = localStorage.getItem('tema');
-if(tema){
-    mudaTema(tema);
-}
-
-// const carregarProfissionais = () =>{
-//     let url = "http://my-json-server.typicode.com/juniorlimeiras/json/profissionais";
-//     let xhr = new XMLHttpRequest();
-//     xhr.open('GET', url);
-//     let tabela = document.querySelector('table');
-//     xhr.addEventListener('readystatechange', () => {
-//         if(xhr.readyState === 4 && xhr.status === 200){
-//             dados = JSON.parse(xhr.responseText);
-//             // console.log(dados);
-//             for (const item of dados){
-//                 //criando os elementos html
-//                 let linha = document.createElement('tr');
-//                 let id = document.createElement('td');
-//                 let registroConselho = document.createElement('td');
-//                 let telefone = document.createElement('td');
-//                 let email = document.createElement('td');
-//                 let unidade = document.createElement('td');
-//                 let especialidade = document.createElement('td');
-//                 let acoes = document.createElement('td');
-//                 //preencher os elementos
-//                 id.textContent = item.id
-//                 nome.textContent = item.nome
-//                 registroConselho.textContent = item.registro
-//                 email.textContent = item.email
-//                 telefone.textContent = item.telefone
-//                 unidade.textContent = item.unidade
-//                 especialidade.textContent = item.especialidade
-//                 acoes.innerHTML = '<a class="botao" href="javascript:void(0)">Editar</a> <a id="vermelho" class="botao" href="javascript:void(0)">Excluir</a>';
-//                 //PREENCHER A LINHA
-//                 linha.appendChild(id);
-//                 linha.appendChild(nome);
-//                 linha.appendChild(registroConselho);
-//                 linha.appendChild(telefone);
-//                 linha.appendChild(email);
-//                 linha.appendChild(unidade);
-//                 linha.appendChild(especialidade);
-//                 linha.appendChild(acoes);
-//                 //Preencher a tabela com uma linha
-//                 tabela.tBodies[0].appendChild(linha);
-//             }
-
-//         }
-//     });
-//     xhr.send();
-// };
-
-// const carregarProfissionais = () =>{
-//     let url = "https://my-json-server.typicode.com/juniorlimeiras/json/profissionais";
-//     let xhr = new XMLHttpRequest();
-//     xhr.open('GET', url);
-//     let tabela = document.querySelector('table');
-//     xhr.addEventListener('readystatechange', () => {
-//         if(xhr.readyState === 4 && xhr.status === 200){
-//             let dados = JSON.parse(xhr.responseText);
-//             // console.log(dados);
-//             for(const item of dados){
-//                 //Criando as colunas da página profissionais
-//                 let linha = document.createElement('tr');
-//                 let id= document.createElement('td');
-//                 let nome = document.createElement('td');
-//                 let registroConselho = document.createElement('td');
-//                 let email = document.createElement('td');
-//                 let telefone = document.createElement('td');
-//                 let unidade = document.createElement('td');
-//                 let especialidade = document.createElement('td');
-//                 let acoes = document.createElement('td');
-//                 //preenchendo os elementos
-//                 id.textContent = item.id
-//                 nome.textContent = item.nome
-//                 registroConselho.textContent = item.registro
-//                 email.textContent = item.email
-//                 telefone.textContent = item.telefone
-//                 unidade.textContent = item.unidade
-//                 especialidade.textContent = item.especialidade
-//                 acoes.innerHTML = '<a class="botao" href="javascript:void(0)">Editar</a> <a id="vermelho" class="botao" href="javascript:void(0)">Excluir</a>';
-//                 //Preenchendo a linha agora kkkk :)
-//                 linha.appendChild(id);
-//                 linha.appendChild(nome);
-//                 linha.appendChild(registroConselho);
-//                 linha.appendChild(email);
-//                 linha.appendChild(telefone);
-//                 linha.appendChild(unidade);
-//                 linha.appendChild(especialidade);
-//                 linha.appendChild(acoes);
-//                 //Preenchendo a tabela com uma linha da tabela
-//                 tabela.tBodies[0].appendChild(linha);
-//         }
-//     }
-//     });
-//     xhr.send();    
-// };
-// carregarProfissionais();
-const carregarProfissionais = () => {
-    let url = "https://my-json-server.typicode.com/juniorlimeiras/json/profissionais";
-    let tabela = document.querySelector('table');
-    fetch(url).then(resposta =>{
-        return resposta.json();
-    }).then(dados => {
-        for (const item of dados){
-                inserirProffisional(item);
-
-        }
-        eventoExcluir();
-    }).catch(erro => {
-        console.error(error)
-    })
-//    let xhr = new XMLHttpRequest();
-//     xhr.open('GET', url);
-//     let tabela = document.querySelector('table');
-//     xhr.addEventListener('readystatechange', () => {
-//         if (xhr.readyState === 4 && xhr.status === 200) {
-//             let dados = JSON.parse(xhr.responseText);
-//             for (const item of dados) {
-//                 let linha = document.createElement('tr');
-//                 let id = document.createElement('td');
-//                 let nome = document.createElement('td');
-//                 let registroConselho = document.createElement('td');
-//                 let email = document.createElement('td');
-//                 let telefone = document.createElement('td');
-//                 let unidade = document.createElement('td');
-//                 let especialidade = document.createElement('td');
-//                 let acoes = document.createElement('td');
-
-//                 id.textContent = item.id;
-//                 nome.textContent = item.nome;
-//                 registroConselho.textContent = item.registro;
-//                 email.textContent = item.email;
-//                 telefone.textContent = item.telefone;
-//                 unidade.textContent = item.unidade;
-//                 especialidade.textContent = item.especialidade;
-//                 acoes.innerHTML = '<a class="botao" href="javascript:void(0)">Editar</a> <a class="botao vermelho" id="vermelho" href="javascript:void(0)">Excluir</a>';
-
-//                 linha.appendChild(id);
-//                 linha.appendChild(nome);
-//                 linha.appendChild(registroConselho);
-//                 linha.appendChild(email);
-//                 linha.appendChild(telefone);
-//                 linha.appendChild(unidade);
-//                 linha.appendChild(especialidade);
-//                 linha.appendChild(acoes);
-
-//                 tabela.tBodies[0].appendChild(linha);
-
-//                 // > Adiciona evento de clique ao botão de exclusão
-//                 let botaoExcluir = linha.querySelector('a.vermelho');
-//                 botaoExcluir.addEventListener('click', () => {
-//                     linha.remove(); // < Remove a linha da tabela
-//                 });
-//             }
-//         }
-//     });
-//     xhr.send();
+    imglogo = document.querySelector('#imglogo');
+    console.log(temaselecionado)
+    if(temaselecionado == 'preto'){
+        imglogo.src = "./imagens/logo_preto(64).png"}
+    else if(temaselecionado == 'amarelo' || temaselecionado == 'vermelho'){
+        imglogo.src = "./imagens/logo_branco(64).png"
+    }
+    else{
+        imglogo.src = "./imagens/logo_azul(64).png"
+    }
 };
-
-carregarProfissionais();
-let botoesExcluir = document.querySelectorAll('a.botao#vermelho');
-// > Adiciona um evento de clique para cada botão
-botoesExcluir.forEach(botao => {
-    botao.addEventListener('click', () => {
-        // > Remove o pai do botão (a linha da tabela)
-        botao.parentNode.parentNode.remove();
-    });
-});
-
-let botaoadicionar = document.querySelector('a.botao#add');
+let tema = localStorage.getItem('tema');
+if (tema) {
+    mudaTema(tema)
+};
+// Cria a funcionalidade dos botões adicionar e cancelar da página que controlam o formulário. funcao adicionada para esconder
+let botaoAdicionar = document.querySelector('.adicionar');
+let botaoCancelar = document.querySelector('.cancelar');
 let form = document.querySelector('form');
-let botaoCancelar = document.querySelector('input#vermelho');
-
-botaoadicionar.addEventListener('click', () => {
+let botaoEsconder2 = document.querySelector('.esconder2');
+// Ao clicar no botão Adicionar, remove a classe que esconde o formulário.
+botaoAdicionar.addEventListener('click', (event) => {
     form.classList.remove('inativo');
+    botaoEsconder2.classList.add('esconder');
+    event.preventDefault();
 });
-botaoCancelar.addEventListener('click', () => {
+// Ao clicar no botão Cancelar, adiciona a classe que esconde o formulário e o reseta. foi adicionado um variavel botaoEsconder2.classList.remove('.esconder');
+botaoCancelar.addEventListener('click', (event) => {
     form.classList.add('inativo');
     form.reset();
-})
-
-let tabela = document.querySelector('table');
-//adicionar um fucionamento para enviar os dados do form a tabela
-form.addEventListener('submit', (evento) =>{
-    evento.preventDefault();
-    let profissionais = {
-        id: tabela.tBodies[0].rows.length + 1,
-        nome: form.nome.value,
-        registro: form.registro.value,
-        telefone: form.telefone.value,
-        email: form.email.value,
-        unidade: form.unidade.options[form.unidade.selectedIndex].label,
-        especialidade: form.especialidade.options[form.especialidade.selectedIndex].label
-    };
-    inserirProffisional(profissionais);
-
+    botaoEsconder2.classList.remove('esconder'); //<< [INDIVIDUAL] Alterar a forma como o usuário visualiza o botão Adicionar. (Entrega: 22/05/2024) O botão Adicionar não deve ser visualizado após ser clicado, mas somente quando o usuário clicar nos botões Enviar ou Cancelar.
+    event.preventDefault();
 });
-//funçao que insere um objeto profissional na tabela html
-const inserirProffisional = (item) => {
-            let linha = document.createElement('tr');
-            let id = document.createElement('td');
-            let nome = document.createElement('td');
-            let registro = document.createElement('td');
-            let email = document.createElement('td');
-            let telefone = document.createElement('td');
-            let unidade = document.createElement('td');
-            let especialidade = document.createElement('td');
-            let acoes = document.createElement('td');
-
-            id.textContent = item.id;
-            nome.textContent = item.nome;
-            registro.textContent = item.registro;
-            email.textContent = item.email;
-            telefone.textContent = item.telefone;
-            unidade.textContent = item.unidade;
-            especialidade.textContent = item.especialidade;
-            acoes.innerHTML = '<a class="botao" href="javascript:void(0)">Editar</a> <a class="botao vermelho" id="vermelho" href="javascript:void(0)">Excluir</a>';
-
-            linha.appendChild(id);
-            linha.appendChild(nome);
-            linha.appendChild(registro);
-            linha.appendChild(email);
-            linha.appendChild(telefone);
-            linha.appendChild(unidade);
-            linha.appendChild(especialidade);
-            linha.appendChild(acoes);
-
-            tabela.tBodies[0].appendChild(linha);
-
+let idTabela = document.querySelector('table');// Adiciona funcionalidade ao botão Enviar e envia os dados do formulário para a tabela
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    botaoEsconder2.classList.remove('esconder'); //<< [INDIVIDUAL] Alterar a forma como o usuário visualiza o botão Adicionar. (Entrega: 22/05/2024) O botão Adicionar não deve ser visualizado após ser clicado, mas somente quando o usuário clicar nos botões Enviar ou Cancelar.
+    // Cria um objeto com os dados do profissional
+    let profissional = {
+        id: idTabela.tBodies[0].rows.length + 1,
+        nome: form.nomeProfissional.value,
+        registro: form.registroProfissional.value,
+        email: form.emailProfissional.value,
+        telefone: form.telefoneProfissional.value, 
+        unidade: form.unidadeProfissional.options[form.unidadeProfissional.selectedIndex].text,
+        especialidade: form.especialidadeProfissional.options[form.especialidadeProfissional.selectedIndex].text
+    };
+    inserirProfissional(profissional); // Insere o profissional na tabela
+    form.reset();
+    form.classList.add('inativo');
+    console.log(profissional)
+});
+// Adiciona as informações na tabela
+const inserirProfissional = (item) => {
+    let tabela = document.querySelector('table'); // Cria elementos de célula para cada informação do profissional
+    let linha = document.createElement('tr');
+    let id = document.createElement('td');
+    let nome = document.createElement('td');
+    let conselho = document.createElement('td');
+    let email = document.createElement('td');
+    let telefone = document.createElement('td');
+    let unidade = document.createElement('td');
+    let especialidade = document.createElement('td');
+    let acoes = document.createElement('td');
+    // Define o texto de cada célula com as informações do profissional
+    id.textContent = item.id;
+    nome.textContent = item.nome;
+    conselho.textContent = item.registro;
+    email.textContent = item.email;
+    telefone.textContent = item.telefone;
+    unidade.textContent = item.unidade;
+    especialidade.textContent = item.especialidade;
+    // Adiciona os botões de ação na célula de ações
+    acoes.innerHTML = ` <a class="editar">Editar</a>
+                        <a class="excluir">Excluir</a>`;
+    // Adiciona as células à linha da tabela
+    linha.appendChild(id);
+    linha.appendChild(nome);
+    linha.appendChild(conselho);
+    linha.appendChild(email);
+    linha.appendChild(telefone);
+    linha.appendChild(unidade);
+    linha.appendChild(especialidade);
+    linha.appendChild(acoes);
+    // Adiciona a linha à tabela
+    tabela.tBodies[0].appendChild(linha)
+    let botaoExcluir = linha.querySelector('.excluir'); // Adiciona a funcionalidade de exclusão ao botão "Excluir"
+    botaoExcluir.addEventListener('click', () => {
+        linha.remove();
+        rodapeTabela();// chamaa  funçao para reduzir. aqui faz parte da atividade [INDIVIDUAL] Alterar o rodapé da tabela que mostra o total de profissionais para que seja atualizado conforme a quantidade de profissionais. (Entrega: 22/05/2024) A atualização deve considerar todos os registros
+    })
+    rodapeTabela();//chama a funçao para adicionar 
+};
+// Carrega as Informações do JSON na tabela
+const carregaTabela = () => {
+    // Define a URL do arquivo JSON
+    let url = 'https://my-json-server.typicode.com/juniorlimeiras/json/profissionais'
+    // Realiza uma solicitação fetch para obter os dados do JSON
+    fetch(url).then(resposta => {
+        return resposta.json();
+    }).then(dados => {
+        // Para cada item no JSON, insere o profissional na tabela
+        for(const item of dados) {
+            inserirProfissional(item);
+        }
+    }).catch(erro => (
+        console.error(erro)
+    ));
 }
-
+//[INDIVIDUAL] Alterar o rodapé da tabela que mostra o total de profissionais para que seja atualizado conforme a quantidade de profissionais. (Entrega: 22/05/2024) A atualização deve considerar todos os registros. >>
+carregaTabela(); // Chama a função para carregar a tabela quando a página é carregada
+const rodapeTabela = () => { // Atualiza o rodapé para a quantidade de linha da tabela.
+    const totalSpan = document.getElementById('total');
+    const totalRegistros = idTabela.tBodies[0].rows.length;
+    totalSpan.textContent = totalRegistros;
+};
+//<<
